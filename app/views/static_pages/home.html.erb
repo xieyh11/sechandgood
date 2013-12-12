@@ -1,0 +1,13 @@
+<% provide(:title, 'Home') %>
+
+<ul class="nav nav-tabs nav-justified home-tabs">
+  <li <% if !@category %> class="active" <% end %> ><%= link_to "All", root_path %></li>
+<% @categories.each do |tmp| %>
+  <li <% if @category && @category.id == tmp.id %> class="active" <% end %> ><%= link_to tmp.title.capitalize, root_path(category: tmp.id) %></li>
+<% end %>
+</ul>
+
+<ol class="goods">
+  <%= render partial: "shared/show_goods", collection: @goods, as: "good" %>
+</ol>
+<%= will_paginate @goods %>

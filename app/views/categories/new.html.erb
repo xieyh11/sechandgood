@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="span8 offset1">
+    <%= form_for(@category) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      <button class="btn btn-primary" type="submint">Post</button>
+      <button class="btn btn-danger" type="reset">Clear</button>
+    <% end %>
+  </div>
+</div>

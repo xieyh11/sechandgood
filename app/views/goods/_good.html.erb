@@ -1,0 +1,17 @@
+<li>
+  <span class="title"><%= good.title %>
+  <% if current_user?(good.user) %>
+    | <%= link_to "delete", good, method: :delete, 
+                                data:{ confirm: "You sure?" },
+                                title: good.title %>
+  <% elsif current_user && current_user.signs.where("good_id=?", good.id).first %>
+    | <a><%= good.user.contact %></a>
+  <% else %>
+    <input type="hidden" name="id" value="<%=good.id %>"/>
+    | <a class="signforit">Sign for it</a>
+  <% end %></span>
+  <span class="content"><%= good.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(good.created_at) %> ago.
+  </span>  
+</li>

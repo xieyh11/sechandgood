@@ -1,0 +1,11 @@
+<li>
+  <span class="title"><%= link_to good.title, good %>
+  <% if signed_in? && current_user.admin? %>
+    | <%= link_to "delete", good, method: :delete,
+                                  data: { confirm: "You sure?" },
+                                  title: good.title %>
+  <% end %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(good.created_at) %> ago.
+  </span>
+</li>
