@@ -48,7 +48,7 @@ def make_goods
   User.all.each do |user|
     5.times do
       title = Faker::Lorem.words(10).sample
-      content = Faker::Lorem.sentence(100)
+      content = Faker::Lorem.sentence(50)
       category_id = categories.sample.id
       user.goods.create!(title: title, content: content, category_id: category_id)
     end
