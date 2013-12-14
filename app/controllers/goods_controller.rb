@@ -49,6 +49,7 @@ class GoodsController < ApplicationController
     def auth_for_sign
       unless signed_in?
         session[:return_to]="/goods/#{params[:id]}"
+        flash[:notice] = "Please sign in."
         respond_to do |format|
           format.html { render text: signin_url, status: 401 }
         end

@@ -252,11 +252,54 @@ aside {
   }
 }
 
+div.error input {
+  border-color: #b94a48;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+div.error input:focus {
+  border-color: #953b39;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+}
+
+div.success input {
+  border-color: #3a87ad;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+div.success input:focus {
+  border-color: #2d6987;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7ab5d3;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7ab5d3;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7ab5d3;
+}
+
 label.error {
   font-weight: bold;
   color: red;
   padding: 2px 8px;
   margin-top: 2px;
+}
+
+label.valid {
+  font-weight: bold;
+  color: green;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+
+div.status {
+  padding-left: 2px;
+}
+
+.offset0 {
+  margin-left: 0px;
 }
 
 .home-tabs{
@@ -266,4 +309,9 @@ label.error {
 
 a.signforit {
   cursor: pointer;
+}
+
+#editor {
+  overflow:scroll;
+  max-height:300px;
 }

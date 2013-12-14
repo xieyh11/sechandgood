@@ -45,6 +45,14 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def validate
+    validate = params[:validate]
+    @user = User.find_by(validate.to_sym => params[:user][validate.to_sym])
+    respond_to do |format|
+      format.json { render json: !@user }
+    end
+  end
+
   private
 
     def user_params

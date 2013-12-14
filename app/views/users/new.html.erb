@@ -1,24 +1,112 @@
+<% content_for :head do %>
+  <script>
+    $.validator.addMethod("userid", function(value, element){
+      return this.optional(element) || /^\d+$/.test(value);
+    }, "Invalid userid");
+    $(function(){
+      $("div.status").css("padding-top", function(){
+        return $(this).prev("div").children("label").outerHeight() + 6;
+      }).css("height", function(){
+        return $(this).prev("div").outerHeight() - $(this).prev("div").children("label").outerHeight() - 6;
+      }).css("padding-left", function(){
+        return $(this).prev("div").width();
+      });
+      $("form").validate({
+        rules: {
+          "user[userid]": {
+            required: true,
+            rangelength: [10, 10],
+            userid: true,
+            remote: "/validate/userid"
+          },
+          "user[name]": {
+            required: true,
+            remote: "/validate/name"
+          },
+          "user[password]": {
+            required: true,
+            minlength: 6
+          },
+          "user[password_confirmation]": {
+            required: true,
+            equalTo: "#user_password"
+          },
+          "user[contact]": {
+            required: true
+          }
+        },
+        messages: {
+          "user[userid]": {
+            required: "User id required",
+            rangelength: $.format("Need exact {0} characters"),
+            userid: "Only digits valid",
+            remote: "User id invalid"
+          },
+          "user[name]": {
+            required: "User name required",
+            remote: "User name invalid"
+          },
+          "user[password]": {
+            required: "Password required",
+            minlength: $.format("At least {0} characters")
+          },
+          "user[password_confirmation]": {
+            required: "Confirmation required",
+            equalTo: "Need be equal to password"
+          },
+          "user[contact]": {
+            required: "Contact info required"
+          }
+        },
+        errorPlacement: function(error, element) {
+          element.closest("div").addClass("error").next("div.status").html(error);
+        },
+        success: function(label) {
+          label.addClass("valid").html("OK").closest("div").prev("div").removeClass("error").addClass("success");
+        },
+        highlight: function(element, errorClass) {
+          $(element).closest("div").removeClass("success").addClass("error");
+        }
+      });
+    });
+  </script>
+<% end %>
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span10 offset3">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
+      
+      <div class="span6 offset0">
       <%= f.label :userid %>
       <%= f.text_field :userid %>
+      </div>
+      <div class="status"></div>
       
+      <div class="span6 offset0">
       <%= f.label :name %>
       <%= f.text_field :name %>
+      </div>
+      <div class="status"></div>
 
+      <div class="span6 offset0">
       <%= f.label :contact %>
       <%= f.text_field :contact %>
+      </div>
+      <div class="status"></div>
 
+      <div class="span6 offset0">
       <%= f.label :password %>
       <%= f.password_field :password %>
+      </div>
+      <div class="status"></div>
 
+      <div class="span6 offset0">
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
+      </div>
+      <div class="status"></div>
 
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
