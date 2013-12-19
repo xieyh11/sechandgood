@@ -10,7 +10,7 @@
     <input type="hidden" name="id" value="<%=good.id %>"/>
     | <a class="signforit">Sign for it</a>
   <% end %></span>
-  <span class="content"><%= good.content %></span>
+  <span class="content"><%= good.content.html_safe %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(good.created_at) %> ago.
   </span>  

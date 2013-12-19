@@ -21,7 +21,8 @@ class GoodsController < ApplicationController
       flash[:success] = "Good created!"
       redirect_to root_url
     else
-      render 'static_pages/home'
+      @categories = Category.all.map { |tmp| [tmp.title, tmp.id] }
+      render 'new'
     end
   end
 
@@ -39,11 +40,19 @@ class GoodsController < ApplicationController
       format.html { render text: tmp.user.contact }
     end
   end
+  
+  def search
+    @goods = Good.search do
+      fulltext params[:query]
+      paginate page: params[:page]
+    end
+    @goods = @goods.results
+  end
 
   private
 
     def good_params
-      params.require(:good).permit(:title, :content)
+      params.require(:good).permit(:title, :content, :category_id)
     end
 
     def auth_for_sign

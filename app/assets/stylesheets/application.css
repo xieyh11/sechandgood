@@ -10,7 +10,6 @@
  *
  *= require_self
  *= require bootstrap
- *= require src/bootstrap-wysihtml5.css
- *= require lib/css/wysiwyg-color.css
+ *= require bootstrap-wysihtml5
  *= require_tree .
  */

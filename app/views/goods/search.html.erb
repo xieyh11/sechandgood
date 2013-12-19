@@ -1,0 +1,5 @@
+<ol class="goods">
+  <%= render partial: "shared/show_goods", collection: @goods, as: "good" %>
+</ol>
+
+<%= will_paginate @goods %>

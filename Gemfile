@@ -7,6 +7,10 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
+gem 'bootstrap-wysihtml5-rails', '~> 0.3.1.23'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

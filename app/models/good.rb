@@ -7,4 +7,14 @@ class Good < ActiveRecord::Base
   validates :category_id, presence: true
   validates :title, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 1000 }
+  searchable do
+    text :title, boost: 5.0
+    text :content, boost: 4.0
+    text :user, boost: 1.0 do
+      user.name
+    end
+    text :category do
+      category.title
+    end
+  end
 end

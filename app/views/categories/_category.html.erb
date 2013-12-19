@@ -1,5 +1,5 @@
 <li>
-  <span class="title"><%= category.title %>
+  <span class="title"><%= link_to category.title, root_path(category: category.id) %>
   <% if signed_in? && current_user.admin? %>
    | <%= link_to "delete", category, method: :delete,
                                 data: { confirm: "You sure?" } %>

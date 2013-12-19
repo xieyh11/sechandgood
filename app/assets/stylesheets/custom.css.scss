@@ -193,6 +193,12 @@ input {
   height: auto !important;
 }
 
+.form-inline .form-group {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
 #error_explanation {
   color: #f00;
   ul {

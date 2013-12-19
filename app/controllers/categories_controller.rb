@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :signed_in_user
-  before_action :admin_user
+  before_action :signed_in_user, except: :index
+  before_action :admin_user, except: :index
   def index
     @categories = Category.paginate(page: params[:page])
   end

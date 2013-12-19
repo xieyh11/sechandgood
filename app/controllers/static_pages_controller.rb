@@ -7,6 +7,10 @@ class StaticPagesController < ApplicationController
     else
       @category = Category.where("id = ?", @category).first
       if @category
+        @more = false
+        @categories.each do |tmp|
+          @more ||= @category == tmp
+        end
         @goods = @category.goods.paginate(page: params[:page])
       else
         @goods = Good.paginate(page: params[:page])
