@@ -1,7 +1,7 @@
 Sechandgood::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :goods, only: [:new, :create, :destroy, :show]
+  resources :goods
   resources :categories, only: [:index, :new, :create, :destroy]
   root to: 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'

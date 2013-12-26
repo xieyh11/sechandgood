@@ -1,6 +1,6 @@
 class GoodsController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy, :new]
-  before_action :correct_user, only: :destroy
+  before_action :signed_in_user, only: [:create, :destroy, :new, :edit, :update]
+  before_action :correct_user, only: [:destroy, :update, :edit]
   before_action :auth_for_sign, only: :signforit
   def index
 
@@ -23,6 +23,20 @@ class GoodsController < ApplicationController
     else
       @categories = Category.all.map { |tmp| [tmp.title, tmp.id] }
       render 'new'
+    end
+  end
+
+  def edit
+    @categories = Category.all.map { |tmp| [tmp.title, tmp.id] }
+  end
+
+  def update
+    if @good.update_attributes(good_params)
+      flash[:success] = "Good updated"
+      redirect_to @good
+    else
+      @categories = Category.all.map { |tmp| [tmp.title, tmp.id] }
+      render 'edit'
     end
   end
 

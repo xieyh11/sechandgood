@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212125620) do
+ActiveRecord::Schema.define(version: 20131219064556) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20131212125620) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "signs", ["user_id", "good_id"], name: "index_signs_on_user_id_and_good_id", unique: true
 
   create_table "users", force: true do |t|
     t.string   "userid"

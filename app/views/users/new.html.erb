@@ -11,12 +11,12 @@
       }).css("padding-left", function(){
         return $(this).prev("div").width();
       });
-      $("form").validate({
+      $("#new_user").validate({
         rules: {
           "user[userid]": {
+            userid: true,
             required: true,
             rangelength: [10, 10],
-            userid: true,
             remote: "/validate/userid"
           },
           "user[name]": {
@@ -37,9 +37,9 @@
         },
         messages: {
           "user[userid]": {
+            userid: "Only digits valid",
             required: "User id required",
             rangelength: $.format("Need exact {0} characters"),
-            userid: "Only digits valid",
             remote: "User id invalid"
           },
           "user[name]": {
@@ -108,7 +108,10 @@
       </div>
       <div class="status"></div>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+
+      <div class="span6 offset0">
+        <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>

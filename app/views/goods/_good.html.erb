@@ -1,6 +1,7 @@
 <li>
   <span class="title"><%= good.title %>
   <% if current_user?(good.user) %>
+    | <%= link_to "edit", edit_good_path(good) %>
     | <%= link_to "delete", good, method: :delete, 
                                 data:{ confirm: "You sure?" },
                                 title: good.title %>
